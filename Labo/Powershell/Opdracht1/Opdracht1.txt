@@ -1,0 +1,19 @@
+Op DC1 :
+	Stel de hostname/computername in.
+	Stel de nodige statische IP gegevens in. 
+	Maak van deze server een Domain Controller voor het Windows domein, "intranet.mijnschool.be".
+	Zorg dat de reverse DNS lookup zone is aangemaakt en "bevolkt".
+	Zorg dat alles correct gezet wordt in "Active Directory Sites and Services".
+	Maak een extra UPN extensie die eindigt op "mijnschool.be". Bij de aanmaak van de gebruikers dien je deze extensie te gebruiken (ook om in te loggen).
+	Maak van deze server de DHCP server, sluit de eerste 10 adressen uit van het subnet. Maak een reservatie voor een printer met MAC adres b8-e9-37-3e-55-86.
+	Maak de OU structuur zoals aangemaakt op onze demo DC1 (intranet.mijn.school.rar).
+	Maak alle gebruikers (met hun homedirectory op de MS) zoals aangemaakt op onze demo DC1 (intranet.mijn.school.rar).
+	Maak alle groepen zoals aangemaakt op onze demo DC1 (intranet.mijn.school.rar).
+	Plaats alle gebruikers in de correcte groepen zoals aangemaakt op onze demo DC1 (intranet.mijn.school.rar).
+Op MS :
+	Maak de server lid van het windows domein (eventueel sysprep-en ...)
+	Maak de home share met de correcte share & NTFS permissies.
+Op DC2 :
+	Maak de server lid van het windows domein (eventueel sysprep-en ...)
+	Configureer deze server als extra DC (en GC) binnen het bestaande Windows domein.
+	Configureer deze server als DHCP server (als replication partner van DC1).
