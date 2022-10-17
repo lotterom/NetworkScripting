@@ -1,8 +1,4 @@
-#===========================
-#===== DC promo dc1 ========
-#===========================
 $dnsdomain="intranet.howest.be"
-$netbiosdomain="mijnschool"
 
 #install active directory
 
@@ -14,3 +10,6 @@ Install-ADDSForest
 -DatabasePath "c:\windows\NTDS"
 -DomainName $dnsdomain
 -Installdns:$true
+
+# Bron:
+# https://learn.microsoft.com/en-us/powershell/module/addsdeployment/install-addsdomaincontroller?view=windowsserver2022-ps
