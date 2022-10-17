@@ -1,0 +1,22 @@
+Op MS :
+Share een map 'public'. Alle personeel mag hierin lezen en schrijven.
+Zorg dat ieder personeelslid een P:-schijf heeft bij login, gekoppeld aan de 'public'-share. (Ook het maken van de login-script wordt verondersteld te 'scripten'.)
+         Optioneel:
+
+Activeer de webserver.
+Creer twee websites, www.intranet.mijnschool.be en resto.intranet.mijnschool.be, met elk een eenvoudige homepage.
+de eerste site is enkel toegankelijk voor het personeel.
+de twee site is voor iedereen beschikbaar.
+Op beide sites moet je wel inloggen met je windows-credentials.
+Experimenteer met Hyper-V (indien mogelijk onder vmware ...).
+Bekijk hiervoor hoofdstuk 10 van de Pluralsight cursus (10 - Hyper-V & VMs).
+
+Op DC2 :
+Maak een verborgen 'profiles' share, dat zwervende gebruikersprofielen zal stockeren.
+Alle secretariaatsmedewerkers delen desktops volgens hun uurrooster. Daarom hebben ze allemaal een zwervend profiel dat opgeslagen wordt op de 'profiles'-share.
+
+Op DC1 :
+Maak een WOL script ahv de address leases in de DHCP server, met de mogelijkheid om te filteren op hostname.
+bvb. iedere hostname die begint met "B203B-PC" ...
+wol.exe via https://sourceforge.net/projects/wake-on-lan/Koppelingen naar een externe site.
+Maak een script om ahv een input file om een aantal Radius client aan te maken in NPS. Allemaal met dezelfde RADIUS secret. Laat ook de mogelijkheid tot per client, de RADIUS standaard mee te geven.
