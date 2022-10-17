@@ -6,3 +6,8 @@ Get-ADForest | Format-List UPNSuffixes
 $Suffix = "mijnschool.be"
 $LocationUsers = Get-ADUsers -Filter {UserPrincipalName -like '*intranet.mijnschool.be'} -Properties User=====principalName -ResultSetSize $nul
 $LocalUsers = Get-ADUder -Filter {UserPrincipalName.Replace("intranet.mijnschool.be",$Suffix); $_ | Set-ADUser -UserPrincipalName $newUpn}
+
+
+$LocalUsers | foreach {$newUpn = $_.UserPrincipalName.
+Replace("intranet.mijnschool.be",$Suffix); $_ | 
+Set-ADUser -UserPrincipalName $newUpn} # Changing the users with old suffix to new one
