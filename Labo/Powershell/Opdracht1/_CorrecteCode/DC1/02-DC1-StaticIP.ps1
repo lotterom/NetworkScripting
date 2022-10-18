@@ -7,7 +7,7 @@ $IpType 	= "IPv4"
 
 $adapter = Get-NetAdapter -Physical | Where-object {$_.PhysicalMediaType -match "802.3" -and $_.Status -eq "up"}
 
-#verwijder bestaande ip adressen op adapter
+# Verwijder bestaande ip adressen op adapter
 if (($adapter | Get-NetIPConfiguration).IPv4Address.IPAddress){
 	$adapter | Remove-NetIpAddress -AddressFamily $IPType -Confirm:$false
 }
@@ -16,8 +16,8 @@ If (($adapter | Get-NetIPConfiguration).Ipv4DefaultGateway){
 	$adapter |Remove-NetRoute -AddressFamily $IPType -Cofirm:$false
 }
 
-#ip adres en default gateway instellen adhv de bovenstaande parameters
-#vergeet de backticks niet
+# IP adres en default gateway instellen adhv de bovenstaande parameters
+# Vergeet de backticks niet
 $adapter | New-NetIPAddress `
 	-AddressFamily $IPType `
 	-IPAddress $IP `
