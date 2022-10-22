@@ -9,14 +9,6 @@ Set-DhcpServerv4Scope -ScopeId 192.168.1.1 -LeaseDuration 1.00:00:00
 
 # DHCP reservation
 
-$HashArgs = @{
-    'ComputerName' = 'win09-DC1';
-    'ScopeId' = '192.168.1.0';
-    'ClientId' = 'b8-e9-37-3e-55-86';
-    'Name' = 'School Printer';
-    'IPAddress' = '192.168.2.15';
-}
-
-Add-DhcpServerv4Reservation @HashArgs
+Add-DhcpServerv4Reservation -ScopeId 192.168.1.0 -IPAddress 192.168.1.5 -ClientId "00-50-56-9C-56-2B" --Diescription "Reservation"
 
 Restart-service dhcpserver
