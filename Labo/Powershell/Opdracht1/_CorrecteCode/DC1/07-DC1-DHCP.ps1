@@ -9,6 +9,6 @@ Set-DhcpServerv4Scope -ScopeId 192.168.1.1 -LeaseDuration 1.00:00:00
 
 # DHCP reservation
 
-Add-DhcpServerv4Reservation -ScopeId 192.168.1.0 -IPAddress 192.168.1.5 -ClientId "00-50-56-9C-56-2B" --Diescription "Reservation"
+Add-DhcpServerv4Reservation -ScopeId 192.168.1.0 -IPAddress 192.168.1.5 -ClientId "00-50-56-9C-56-2B" -Description "Reservation"
 
 Restart-service dhcpserver
