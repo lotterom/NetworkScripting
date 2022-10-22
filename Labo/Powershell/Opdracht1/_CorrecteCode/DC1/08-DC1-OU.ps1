@@ -2,7 +2,7 @@
 Import-Module activedirectory
 
 # path csv
-$csv = " c:/"
+$csv = " C:\Users\Mijn_School\Mijn_School\OUs.csv"
 
 $TestPath = Test-Path -Path $csv  -PathType Leaf
 Write-Host $TestPath
