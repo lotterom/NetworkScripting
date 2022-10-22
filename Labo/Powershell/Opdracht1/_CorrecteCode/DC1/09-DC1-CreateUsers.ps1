@@ -1,7 +1,8 @@
-$csv = "C:\"
+Import-Module ActiveDirectory
+
+$csv = "C:\Users\Mijn_School\Mijn_School\UserAccounts.csv"
 $Path = Test-Path -Path $csv -PathType Leaf
 
-Write-Host $Path
 
 if ($Path -like "False")
 {
@@ -9,16 +10,16 @@ if ($Path -like "False")
 }
 
 $FileName = "logon.bat"
-$FilePath = "\\"
+$Path = ""
 
-if (Test-Path $FilePath) {
+if (Test-Path $Path) {
     Write-Host "Wordt uitgevoerd."
 }
 else {
     New-Item -Path "" -Name $FileName
 
-    "@echo off" | Out-File -FilePath $FilePath
-    "net user H: \\win09-MS\Home" | Out-File -FilePath $FilePath -Append
+    "@echo off" | Out-File -FilePath $Path
+    "net user H: \\win09-MS\Home" | Out-File -FilePath $Path -Append
 
 }
 
@@ -49,4 +50,3 @@ foreach ($user in $ADUser)
     -ScriptPath $script_path `
     -Path $path
 }
-

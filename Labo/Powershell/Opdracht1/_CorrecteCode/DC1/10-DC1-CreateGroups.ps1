@@ -1,29 +1,52 @@
-$csv="C:\"
-$Path = Test-Path -Path $csvFile -PathType Leaf
+Import-Module ActiveDirectory
 
-Write-Host $Path
+$csv = "C:\Users\Mijn_School\Mijn_School\UserAccounts.csv"
+$Path = Test-Path -Path $csv -PathType Leaf
 
-if ($Path -like "False") {
-    Write-Host "Stopping the script - File not Found"
-    exit 1
+
+if ($Path -like "False")
+{
+    Write-Host "--Bestand niet gevonden--"
 }
 
-$Groups = Import-csv $csv -Delimeter ";"
+$FileName = "logon.bat"
+$Path = ""
 
-foreach($Group in $Groups)
+if (Test-Path $Path) {
+    Write-Host "Wordt uitgevoerd."
+}
+else {
+    New-Item -Path "" -Name $FileName
+
+    "@echo off" | Out-File -FilePath $Path
+    "net user H: \\win09-MS\Home" | Out-File -FilePath $Path -Append
+
+}
+
+$ADUser = Import-csv $csv -Delimiter ";"
+
+foreach ($user in $ADUser)
 {
-    $path = $Group.Path
-    $name = $Group.Name
-    $display_name = $Group.DisplayName
-    $desc = $Group.Description
-    $category = $Group.GroupCategory
-    $scope = $Group.GroupScope
+    $name = $user.Name
+    $acc_name = $user.SamAccountName
+    $given_name = $user.GivenName
+    $sur_name = $user.Surname
+    $display_name = $user.DisplayName
+    $passwd = $user.AccountPassword
+    $home_drive = $user.HomeDrive
+    $home_directory = $user.HomeDirectory
+    $script_path = $user.ScriptPath
+    $path = $user.Path
 
-    New-ADGroup `
-    -Path $path `
+    New-ADUser `
     -Name $name `
+    -SamAccountName $acc_name `
+    -GivenName $given_name `
+    -Surname $sur_name `
     -DisplayName $display_name `
-    -Description $desc `
-    -GroupCategory $category `
-    -GroupScope $scope
+    -AccountPassword (convertto-securestring "$passwd" -asplaintext -force)  `
+    -HomeDrive $home_drive `
+    -HomeDirectory $home_directory `
+    -ScriptPath $script_path `
+    -Path $path
 }
