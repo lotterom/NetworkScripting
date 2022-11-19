@@ -1,0 +1,10 @@
+1. Maak een script waarbij je togglet tussen dhcp en static ip.
+
+2. Maak een backupscript (tar ...)van een bepaalde map met alle submappen en plan die iedere zondag om 17u.
+
+uitbreiding : maak een backup van de mysql dbase en zorg dat deze meegebackupt wordt.
+3. Aanmaken dhcp ranges ahv input file in de isc-dhcp-server.
+
+4. Aanmaken van een alias record voor de apache2 website in bind9.
+
+5. Zoek de bijna-vervallen (14 dagen) server certificaten.
