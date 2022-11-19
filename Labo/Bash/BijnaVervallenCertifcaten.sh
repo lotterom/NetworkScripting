@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #zoek alle certificaten (.crt) ouder dan 2 weken
-CERTS = find / -type f -name '*.crt' -mtime +14
+CERTS = find /etc/ca-certificates.conf -type f -name '*.crt' -mtime +14
 
 #schrijf certificaten weg naar file
 FILE = /home/user/NetwScripting/certs/certificaten.txt
